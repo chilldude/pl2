@@ -1,64 +1,35 @@
-/**
- * Module dependencies.
- */
-
-var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , article = require('./routes/article')
-  , auth = require('./routes/auth')
-  , models = require('./schemas/models')
-  , http = require('http')
-  , path = require('path')
-  , passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy
-  , bcrypt = require('bcrypt');
-
+// The App
+var express = require("express");
 var app = express();
+// Use static middleware
+app.use(express.static(__dirname + '/public'));
+// Set the view engine
+app.set('view engine', 'jade');
 
-app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.favicon());
-  app.use(express.logger('dev'));
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.cookieParser('your secret here'));
-  app.use(express.session());
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(app.router);
-  app.use(require('stylus').middleware(__dirname + '/public'));
-  app.use(express.static(path.join(__dirname, 'public')));
+// Set the directory that contains the views
+app.set('views', __dirname + '/views');
+app.use(function (req, res, next) {
+  // Variable
+  res.locals.variable = 'foobar';
+
+  // Function
+  res.locals.function = function (param) {
+    return param + req.url;
+  };
+
+  next();
 });
-
-app.configure('development', function(){
-  app.use(express.errorHandler());
+// Use the router middleware
+app.use(app.router);
+// Get route with one middleware
+app.get("/", function (req, res) {
+  res.send("root");
 });
+// Create HTTP server with your app
+var http = require("http");
+var server = http.createServer(app)
 
-//configure routes
-app.get('/', routes.index);
-app.get('/login', auth.login);
-app.get('/register', auth.register);
-app.post('/registerHandler', auth.registerHandler);
-app.get('/profile', user.profile);
-app.get('/article', article.details);
-app.get('/search', article.results);
-app.get('/view', article.view);
-app.get('/users', user.list);
-
-app.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/profile');
-  });
-
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
-}
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
+// Listen to port 3000
+server.listen(3000, function(){
+  console.log('server started on port 3000');
 });
