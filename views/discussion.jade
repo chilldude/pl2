@@ -1,0 +1,57 @@
+.single-thread
+	a(href="#").all-discussions
+		i.icon-circle-arrow-left
+		|  All Discussions
+	.thread-content
+		.summary-wrap
+			h4 Summary of Paragraph 3
+				span.edit-options
+					a(href="#").edit-link
+						i.icon-edit
+						|  Edit
+				span.save-options
+					a(href="#").cancel-link
+						i.icon-remove-sign
+						|  Cancel
+					a(href="#").save-link
+						i.icon-ok-sign
+						|  Save Changes
+			.paragraph-summary(contenteditable=true)#summary Compilers for statically typed languages rely on type information to generate efficient machine code. In a dynamically typed pro-gramming language such as JavaScript, the types of expressionsmay vary at runtime. This means that the compiler can no longereasily transform operations into machine instructions that operateon one specific type.
+		.thread-wrap
+			h4 Discussion
+			div.compose-comment
+				textarea(placeholder="Write a comment...").comment-input
+				button(type="submit").comment-submit.btn-blue Add Comment
+				.clearfix
+			div.all-comments
+				ol.comments-list
+					li.single-comment
+						.profile-picture
+							img(src="http://placehold.it/40x40")
+						.comment-content
+							span.name
+								b Rodrigo Ochigame
+							br
+							span.msg Lorem ipsum dolor sit amet, consectetur adipisicing elit. Institutionem. Arbitror pluribus multo meo vide, putavisset afficit maledici nondum modus accurate extremum, nam vestrae adquiescere vituperata decore pauca iucunde, quaeri motus tenebo numeranda omnis, dicent illam bonorum oratio negarent, vide mihi stoicis sensum percurri latinam l omittantur
+							br
+							span.time-stamp Today 5:33 pm
+					li.single-comment
+						.profile-picture
+							img(src="http://placehold.it/40x40")
+						.comment-content
+							span.name
+								b Tony Chen
+							br
+							span.msg Lorem Orbitror pluribus multo meo vide, putavisset afficit maledici nondum modus accurate extremum, nam vestrae adquiescere vituperata decore pauca iucunde, quaeri motus tenebo numeranda omnis, dicent illam bonorum oratio negarent, vide mihi stoicis sensum percurri latinam l omittantur
+							br
+							span.time-stamp Today 4:21 pm
+					li.single-comment
+						.profile-picture
+							img(src="http://placehold.it/40x40")
+						.comment-content
+							span.name
+								b Mi Tar
+							br
+							span.msg Pluribus multo meo vide, putavisset afficit maledici nondum modus accurate extremum, nam vestrae adquiescere vituperata decore pauca iucunde, quaeri motus tenebo numeranda omnis, dicent illam bonorum oratio negarent, vide mihi stoicis sensum percurri latinam l omittantur
+							br
+							span.time-stamp Thursday 1:22 pm

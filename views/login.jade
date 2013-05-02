@@ -1,0 +1,17 @@
+extends layout-alt
+
+block content
+	.form-container
+		h2 Welcome back!
+		form(method='POST', action='/login')
+			p
+				span
+					label(for='username') Email
+					input(type='text', value='', name='username', id='email', placeholder='Email address')
+			p
+				span
+					label(for='password') Password
+					input(type='password', value='', name='password', id='password', placeholder='Password')
+			p
+				span
+					input(type='submit', value='Sign in')

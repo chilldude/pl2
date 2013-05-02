@@ -1,0 +1,141 @@
+extends layout
+
+block content
+	.container_12
+		.grid_9
+			.topbar
+				a(href='#').active Top <hr>
+				a(href='#') New <hr>
+				a(href='#') Controversial <hr>
+			.clearfix
+			ol.item-list
+				- for (var i = 0; i < 20; ++i) {
+					li
+						.article-summary
+							.article-summary-data
+								span.score-badge 69
+								h4.title
+									a(href='#').viewer-link The muscle contraction, operation of ATP synthase Analytical aspects of Brownian motor effect in randomly flashing ratchets
+								.clearfix
+								span.authors.line
+									a(href='#') Dmitry Vorotnikov
+								| <br>
+								span.date.line June 2012
+								|	in 
+								span.field.line
+									a(href='#') Astrophysics
+								|	&raquo; 
+								span.topics.line
+									a(href='#') High Energy Astrophysical Phenomena
+								| <br>
+								span.actions.line
+									a(href='#').preview-link Preview abstract
+									|  &middot; 
+									a(href='#') Full text
+									|  &middot; 
+									a(href='#') Details 
+									i.icon-external-link
+							span.article-summary-stats
+								span
+									i.icon-bookmark
+									|  133 
+								span
+									i.icon-edit
+									|  42 
+							.clearfix
+							.abstract
+								p The muscle contraction, operation of ATP synthase, maintaining the shape of a cell are believed to be secured by motor proteins, which can be modelled using the Brownian ratchet mechanism. We consider the randomly ﬂashing ratchet model of a Brownian motor, where the particles can be in two states, only one of which is sensitive the applied spatially periodic potential (the mathematical setting is a pair of weakly coupled reactiondiffusion and Fokker-Planck equations).
+				- }
+		.grid_3
+			.search-tools
+				h3 Refine Search
+				form(action='/search')
+					span.filter
+						label(for='topics') Topics
+						select.chzn(type='text', id='topics', data-placeholder='Select topic(s)', multiple)
+							option(value='')
+							option Computer Science
+							option Biology
+							option Physics
+							option Chemistry
+							option Philosophy
+							option Mathematics
+							option Political Science
+							option Big Data
+							option html5 nanotechnology
+							option bitcoin casino
+							option robot circus
+					span.filter
+						label(for='journal') Published in
+						select.chzn(type='text', id='journal', data-placeholder='Select journal(s)', multiple)
+							option PLOS Biology
+							option Theory of Computing
+							option Science and Technology of Advanced Materials
+							option Computational Linguistics
+							option BMJ
+							option Anamesa
+							option Culture Machine
+							option European Political Economy Review
+					span.filter
+						label(for='title') Title contains
+						input(type='text', id='title')
+					span.filter
+						label(for='abstract') Abstract contains
+						input(type='text', id='abstract')
+					span.filter
+						label(for='author') Author name
+						input(type='text', id='author')
+					span.filter
+						label(for='score').label-slider Peer Library score
+						input(type='text', id='score', disabled)
+						.clearfix
+						#score-range
+					span.filter	
+						label(for='pub_date').label-slider Publication year
+						input(type='text', id='pub-date', disabled)
+						.clearfix
+						#date-range
+
+block misc
+	script(type='text/javascript')
+		$(document).ready(function() {
+			$(".chzn").chosen();
+
+			$('#score-range').slider({
+				range: true,
+				min: 0,
+				max: 100,
+				values: [ 0, 100 ],
+				step: 10,
+				slide: function( event, ui ) {
+					$( "#score" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+				}
+			});
+			$( "#score" ).val( $( "#score-range" ).slider( "values", 0 ) +
+				" - " + $( "#score-range" ).slider( "values", 1 ) );
+
+			$('#date-range').slider({
+				range: true,
+				min: 0,
+				max: 100,
+				values: [ 0, 100 ],
+				step: 10,
+				slide: function( event, ui ) {
+					$( "#pub-date" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+				}
+			});
+			$( "#pub-date" ).val( $( "#date-range" ).slider( "values", 0 ) +
+				" - " + $( "#date-range" ).slider( "values", 1 ) );
+
+			// adjust positioning of sidebar
+			if($(window).width() < 1140){
+				$('.search-tools').css({'position':'absolute'});
+			};
+			$(window).resize(function(){
+				if($(window).width() < 1140){
+					$('.search-tools').css({'position':'absolute'});
+				} else {
+					$('.search-tools').css({'position':'fixed'});
+				};
+			});
+		});
