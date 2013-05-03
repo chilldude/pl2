@@ -3,5 +3,8 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
-  color: #00b7ff;
+  color: #f00 !important;
+}
+input {
+  height: 100px;
 }
