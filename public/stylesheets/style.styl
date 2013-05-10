@@ -1,8 +1,187 @@
+@import url('http://fonts.googleapis.com/css?family=PT+Sans:400,700')
+@import 'glyph.css'
+
+//variables
+blue = #338ed5
+blue-accent = #2270ab
+
+//general
+
+html, button, input, select, textarea
+  color: #22
+
 body
-  padding: 50px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  font: 14px "PT Sans", sans-serif
+  margin: 0 auto
+  background: #f6f8f8
+
+::-moz-selection
+  background: #b3d4fc
+  text-shadow: none
+
+::selection
+  background: #b3d4fc
+  text-shadow: none
+
+hr
+  display: block
+  height: 1px
+  border: 0
+  border-top: 1px solid #dee7e9
+  margin: 1em 0
+  padding: 0
+
+img
+  vertical-align: middle
+
+fieldset
+  border: 0
+  margin: 0
+  padding: 0
+
+textarea
+  resize: vertical
+
+.chromeframe
+  margin: 0.2em 0
+  background: #dee7e9
+  color: #000
+  padding: 0.2em 0
+
 a
-  color: red!important
+  color: #00B7FF
+  text-decoration: none
 
 input
-  height: 100px;
+  font-family: "PT Sans", sans-serif
+  outline: none
+
+/*
+  header
+  ======
+*/
+header
+  background: blue
+  height: 45px
+  font-size: 16px
+
+.logo
+  width: 145px
+  float: left
+  margin-right: 20px
+
+.logo a
+  color: white
+  text-decoration: none
+  line-height: 45px
+  font-size: 22px
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+  background: transparent
+  display: inline-block
+  padding: 0 20px
+  transition: 0.2s
+
+.logo a:hover
+  background: blue-accent
+
+ul.top-menu
+  list-style: none
+  padding: 0
+  margin: 0
+  color: white
+
+ul.top-menu li
+  display: block
+  float: left
+  line-height: 45px
+
+ul.top-menu li a
+  color: white
+  display: block
+  padding: 0 20px
+  transition: 0.2s
+
+ul.top-menu li.search
+  padding: 0 20px
+  cursor: pointer
+  width: 310px
+  transition: 0.2s
+
+ul.top-menu li.search .search-form
+  display: none
+
+ul.top-menu li.search .search-form input
+  background: transparent
+  border: 0
+  color: blue-accent
+  font-size: 18px
+  width: 390px
+  display: inline
+
+ul.top-menu li.selected
+  width: 420px
+  background: white
+
+ul.top-menu li.selected span.label
+  display: none
+
+ul.top-menu li.selected .search-form
+  white-space: nowrap
+  display:inline
+
+ul.top-menu li span.search-button
+  color: blue-accent
+  border: none
+  display: inline
+  position: relative
+  right: -10px
+
+ul.top-menu li a:hover, ul.top-menu li.search:hover
+  background: white
+  color: blue-accent
+
+span.cursor
+  animation: blink 1s linear 0s infinite
+  display: inline-block
+  width: 1px
+  height: 23px
+  background: blue-accent
+  position: relative
+  top: 6px
+  visibility: hidden
+  margin-left: 2px
+
+@-webkit-keyframes blink {
+  0%   { opacity:1 }
+  47%  { opacity:1 }
+  50%  { opacity:0 }
+  97%  { opacity:0 }
+  100% { opacity:1 }
+}
+
+@-moz-keyframes blink {
+  0%   { opacity:1 }
+  47%  { opacity:1 }
+  50%  { opacity:0 }
+  97%  { opacity:0 }
+  100% { opacity:1 }
+}
+
+@-ms-keyframes blink {
+  0%   { opacity:1 }
+  47%  { opacity:1 }
+  50%  { opacity:0 }
+  97%  { opacity:0 }
+  100% { opacity:1 }
+}
+
+@-o-keyframes blink {
+  0%   { opacity:1 }
+  47%  { opacity:1 }
+  50%  { opacity:0 }
+  97%  { opacity:0 }
+  100% { opacity:1 }
+}
+
+ul.top-menu li.search:hover span.cursor
+  visibility: visible

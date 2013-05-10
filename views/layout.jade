@@ -1,34 +1,40 @@
 doctype 5
 html
-	head
-		title= title
-		link(rel='stylesheet', href='stylesheets/style.css')
-		include includes/scripts
-	body
-		header
-			.container_12.wrap
-				.grid_12
-					.logo
-						a(href='/')
-							img(src='img/logo.png')
-					.menu
-						ul.nav
-							li
-								a(href='#').search-link
-									i.icon-search.icon-large
-							li
-								a(href='/register') Register
-							li
-								a(href='/login').last Sign in
-		section
-			block content
-		.search
-			.container_12.wrap
-				.grid_12
-					.logo
-						a(href='#')
-							img(src='img/logo.png')
-				.grid_12.search-bar
-					i.search-icon.icon-search.icon-3x
-					input(type='text', placeholder='Search 1,234,567 scholarly articles').search-input
-		block misc
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/grid.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js')
+  body
+    header
+      .container
+        .col16
+          .logo
+            a(href="#") PeerLibrary
+          ul.top-menu
+            li.search
+              span.label Search for publications, authors or keywords
+                span.cursor
+              .search-form
+                form(action='')#search
+                  input(type='text', name='q', autocompleteOff).search-input
+                  input(type='hidden', name='ie', value='UTF-8')
+                  span.search-button
+                    i.icon-search
+            script(type='text/javascript')
+              $('.searchbutton').click(function(){
+              });
+              $(document).click(function(){
+                $('.top-menu .search').removeClass('selected');
+                $('li.explore').fadeIn(200);
+              });
+              $('.top-menu .search').click(function(e){
+
+                $(this).addClass('selected');
+                $('.search-input').focus();
+                $('li.explore').hide()
+                e.stopPropagation();
+              });
+            li.explore
+              a(href='#') Explore
+    block content
